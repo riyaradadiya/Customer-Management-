@@ -82,7 +82,7 @@ cms = CustomerManagementSystem()
 @app.route('/')
 def index():
     customers = cms.get_all_customers()
-    return render_template('index.html', customers=customers)
+    return render_template('home.html', customers=customers)
 
 @app.route('/add_customer', methods=['POST'])
 def add_customer():
