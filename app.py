@@ -80,7 +80,7 @@ class CustomerManagementSystem:
 cms = CustomerManagementSystem()
 
 @app.route('/')
-def home():
+def index():
     customers = cms.get_all_customers()
     return render_template('index.html', customers=customers)
 
