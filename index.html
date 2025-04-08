@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Customer Management System</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+</head>
+<body>
+    <h1>Customer Management System</h1>
+
+    <!-- Form to Add Customer -->
+    <h2>Add New Customer</h2>
+    <form action="/add_customer" method="POST">
+        <input type="text" name="first_name" placeholder="First Name" required>
+        <input type="text" name="last_name" placeholder="Last Name" required>
+        <input type="text" name="address" placeholder="Address" required>
+        <input type="text" name="phone_number" placeholder="Phone Number" required>
+        <input type="number" name="due_amount" placeholder="Due Amount" required>
+        <button type="submit">Add Customer</button>
+    </form>
+
+    <!-- List of All Customers -->
+    <h2>All Customers</h2>
+    <ul>
+        {% for customer in customers %}
+            <li>
+                <a href="/customer/{{ loop.index0 }}">
+                    {{ customer['first_name'] }} {{ customer['last_name'] }} - Remaining Balance: ${{ customer['remaining_balance'] }}
+                </a>
+
+                <form action="/make_payment/{{ loop.index0 }}" method="POST">
+                    <input type="number" name="payment_amount" placeholder="Payment Amount" required>
+                    <input type="date" name="payment_date" required>
+                    <input type="text" name="payment_method" placeholder="Payment Method" required>
+                    <button type="submit">Make Payment</button>
+                </form>
+
+                <form action="/delete_customer/{{ loop.index0 }}" method="POST">
+                    <button type="submit">Delete Customer</button>
+                </form>
+            </li>
+        {% else %}
+            <li>No customers available.</li>
+        {% endfor %}
+    </ul>
+</body>
+</html>

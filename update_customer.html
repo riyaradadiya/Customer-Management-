@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Edit Customer</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+</head>
+<body>
+    <h1>Update Customer Information</h1>
+    <form action="/update_customer/{{ customer['first_name'] }}" method="POST">
+        <input type="text" name="first_name" value="{{ customer['first_name'] }}" required>
+        <input type="text" name="last_name" value="{{ customer['last_name'] }}" required>
+        <input type="text" name="address" value="{{ customer['address'] }}" required>
+        <input type="text" name="phone_number" value="{{ customer['phone_numbe<!DOCTYPE html>
+        <html lang="en">
+        <head>
+            <meta charset="UTF-8">
+            <meta name="viewport" content="width=device-width, initial-scale=1.0">
+            <title>Edit Customer</title>
+            <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+        </head>
+        <body>
+            <h1>Update Customer Information</h1>
+            <form action="/update_customer/{{ customer['first_name'] }}" method="POST">
+                <input type="text" name="first_name" value="{{ customer['first_name'] }}" required>
+                <input type="text" name="last_name" value="{{ customer['last_name'] }}" required>
+                <input type="text" name="address" value="{{ customer['address'] }}" required>
+                <input type="text" name="phone_number" value="{{ customer['phone_number'] }}" required>
+                <button type="submit">Update</button>
+            </form>
+        </body>
+        </html>
+        r'] }}" required>
+        <button type="submit">Update</button>
+    </form>
+</body>
+</html>

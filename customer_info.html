@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Customer Information</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+</head>
+<body>
+    <h1>{{ customer['first_name'] }} {{ customer['last_name'] }} - Payment History</h1>
+
+    <h3>Address: {{ customer['address'] }}</h3>
+    <h3>Phone Number: {{ customer['phone_number'] }}</h3>
+    <h3>Total Due: ${{ customer['total_due'] }}</h3>
+
+    <h2>Payments</h2>
+    <table>
+        <thead>
+            <tr>
+                <th>Amount</th>
+                <th>Date</th>
+                <th>Method</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for payment in customer['payments'] %}
+                <tr>
+                    <td>${{ payment['amount'] }}</td>
+                    <td>{{ payment['date'].strftime('%Y-%m-%d') }}</td>
+                    <td>{{ payment['method'] }}</td>
+                </tr>
+            {% else %}
+                <tr>
+                    <td colspan="3">No payments recorded.</td>
+                </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+
+    <a href="{{ url_for('index') }}">Back to Customer List</a>
+</body>
+</html>
