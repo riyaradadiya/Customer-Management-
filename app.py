@@ -79,6 +79,9 @@ class CustomerManagementSystem:
 # Initialize the CustomerManagementSystem
 cms = CustomerManagementSystem()
 
+with open("index.html","r")as f:
+    render_template = f.read()
+
 @app.route('/')
 def index():
     customers = cms.get_all_customers()
